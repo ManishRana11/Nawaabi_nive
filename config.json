@@ -1,0 +1,15 @@
+{
+  "params":
+  {
+    "local_server":"True",
+    "local_uri": "mysql://root:@localhost/nawaabi",
+    "prod_uri":"mysql://root:@localhost/nawaabi",
+    "gmail-user":"@gmail.com",
+    "gmail-password":"#####",
+    "no_of_recipes": 12,
+    "login_image":"login.jpg",
+    "admin_user":"name",
+    "admin_password": "######",
+    "upload_location":"C:\\Users\\new\\Desktop\\Nawaabi_nive"
+  }
+}

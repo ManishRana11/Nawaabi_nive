@@ -1,0 +1,30 @@
+.about {
+	width: auto;
+	padding: 20px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.pic {
+	float: left;
+	width: 50%;
+	padding: 15px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.pic img {
+	overflow: hidden;
+}
+
+.pic h3 {
+	text-align: left;
+	font-weight: bold;
+	font-size: 80px;
+}
+
+.pic p {
+	text-align: left;
+	font-family: cursive;
+	font-size: 20px;
+}

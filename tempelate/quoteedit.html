@@ -1,0 +1,48 @@
+{% extends "adminlayout.html" %}
+{% block content %}
+<!-- Page Header -->
+{% for desktop in desktop %}
+{% set admindeskname = 'img/' + desktop.admindesk %}
+<div class="desktop">
+    <img src="{{ url_for('static', filename=admindeskname)}}" alt="background">
+    <div class="centered">Admin</div>
+</div>
+{% endfor %}
+    <div class="overlay">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a href="/adminhome">  <button class="btn btn-primary"> Home Page</button></a>
+            <hr>
+            <h1>Add/Edit Quote Image</h1>
+            <form name="sentMessage" id="contactForm" action = "/quoteedit/{{sno}}" method="post" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Quote Background</label>
+                        <input class="form-control" placeholder="Quote Background" name = "src" id="src" value="{{quote.src}}">
+                        <p class="help-block text-danger"></p>
+
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

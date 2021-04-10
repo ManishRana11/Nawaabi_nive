@@ -1,0 +1,76 @@
+{% extends "adminlayout.html" %}
+{% block content %}
+<!-- Page Header -->
+{% for desktop in desktop %}
+{% set admindeskname = 'img/' + desktop.admindesk %}
+<div class="desktop">
+    <img src="{{ url_for('static', filename=admindeskname)}}" alt="background">
+    <div class="centered">Admin</div>
+</div>
+{% endfor %}
+    <div class="overlay">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a href="/adminrecipe">  <button class="btn btn-primary"> Recipe Page</button></a>
+            <hr>
+            <h1>Add/Edit Recipes</h1>
+            <form name="sentMessage" id="contactForm" action = "/recipeedit/{{sno}}" method="post" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Recipe Name</label>
+                        <input type="text" class="form-control" placeholder="Recipe Name" id="name" name='name' required data-validation-required-message="Please enter recipe name." value="{{recipe.name}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Ingredients</label>
+                        <textarea class="form-control" placeholder="Ingredients" name = "ingredient" id="ingredient" required data-validation-required-message="Please enter the ingredients.">{{recipe.ingredient}}</textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Youtube Video ID</label>
+                        <input type="text" class="form-control" placeholder="Youtube Video ID" name="yt" id="yt" required data-validation-required-message="Please enter youtube video id." value="{{recipe.yt}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Process</label>
+                        <textarea class="form-control" placeholder="Process" name = "process" id="process" required data-validation-required-message="Please enter the process.">{{recipe.process}}</textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Image</label>
+                        <input class="form-control" placeholder="Image" name = "img" id="img" value="{{recipe.img}}">
+                        <p class="help-block text-danger"></p>
+
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

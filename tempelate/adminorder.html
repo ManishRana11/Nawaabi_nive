@@ -1,0 +1,31 @@
+{% extends 'adminlayout.html'%}
+{% block content %}
+<!--content-->
+{% for desktop in desktop %}
+{% set orderdeskname = 'img/' + desktop.orderdesk %}
+	<div class="desktop">
+		<img src="{{ url_for('static', filename=orderdeskname)}}" alt="background">
+		<div class="centered">Place Order</div>
+	</div>
+{% endfor %}
+	<div class="post">
+		<a href="/orderedit/0">  <button style="background-color: green;" class="btn btn-primary"> Add new item</button></a>
+		<h1 style="color: #ff6666">Let's taste some deliciousness</h1>
+		<br>
+		<div class="recipe">
+			{% for items in items %}
+			{% set orname = 'img/' + items.pic %}
+			<div class="order">
+				<img src="{{ url_for('static', filename=orname)}}" alt="cake_1">
+				<a href="/adminorder/{{items.item}}">{{items.item}}</a>
+
+				<br>
+				<p>&#8377; {{items.price}}</p>
+                <a href="/orderedit/{{items.sno}}"><button class="btn btn-primary" >Edit</button></a>
+                <a href="/orderdelete/{{items.sno}}"><button style="background-color: red;" class="btn btn-primary">Delete</button></a>
+
+			</div>
+			{% endfor  %}
+		</div>
+	</div>
+{% endblock %}

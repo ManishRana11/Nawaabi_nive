@@ -1,0 +1,28 @@
+.order {
+	float: left;
+	width: 33.3%;
+	height: 350px;
+	padding: 15px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.order img {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.order a {
+	color: gray;
+	font-size: 25px;
+}
+
+.order a:hover {
+	color: green;
+	text-decoration: none;
+}
+
+.order p {
+	font-size: 20px;
+}

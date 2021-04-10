@@ -1,0 +1,34 @@
+{% extends 'adminlayout.html'%}
+{% block content %}
+<style>
+	#myUL li a:hover {
+	background-color: #eee;
+	}
+</style>
+<!--content-->
+{% for desktop in desktop %}
+{% set recipedeskname = 'img/' + desktop.recipedesk %}
+	<div class="desktop">
+		<img src="{{ url_for('static', filename=recipedeskname)}}" alt="background">
+		<div class="centered">Recipes</div>
+	</div>
+{% endfor %}
+	<div class="post">
+		<a href="/recipeedit/0"><button style="background-color: green;" class="btn btn-primary"> Add new recipe</button></a>
+		<h1>Stay tuned for mouth watering recipes</h1>
+		&nbsp
+		<div class="recipe">
+			{% for recipe in recipe %}
+			{% set fname = 'img/' + recipe.img %}
+			<div class="album">
+				<img src="{{ url_for('static', filename=fname)}}" alt="recipe_1">
+				<a href="/recipeedit/{{recipe.sno}}"><button class="btn btn-primary" >Edit</button></a>
+				<a href="/adminrecipe/{{recipe.name}}">{{recipe.name}}</a>
+				<a href="/recipedelete/{{recipe.sno}}"><button style="background-color: red;" class="btn btn-primary">Delete</button></a>
+			</div>
+			{% endfor  %}
+		</div>
+		<a href="{{prev}}" style="float:left;" class="btn btn-success" style="font-size: 20px;">&laquo; Previous</a>
+		<a href="{{next}}" style="float:right;" class="btn btn-success" style="font-size: 20px;">Next &raquo;</a>
+	</div>
+{% endblock %}

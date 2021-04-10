@@ -1,0 +1,177 @@
+	.header {
+		overflow: hidden;
+		padding: 25px 10px;
+		background-color: transparent;
+		position: fixed;
+		width: 100%;
+	}
+
+	.active {
+		background-color: rgba(34,34,34,0.8);
+	}
+
+	.header a {
+		float: left;
+  		color: white;
+		text-align: center;
+		padding-left: 12px;
+		text-decoration: none;
+		font-size: 18px; 
+	}
+
+	.header a.logo {
+		padding-left: 60px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.header a:hover {
+		color: gray;
+	}
+
+	.header_right {
+		padding-right: 80px;
+		float: right;
+	}
+
+	.header_right a {
+		margin-right: 15px;
+	}
+
+	.desktop {
+		width: 100%;
+		height: 650px;
+		padding-top: 0.1%;
+	}
+
+	.desktop img {
+		width: 100%;
+		max-height: 100%;
+		overflow: hidden;
+	}
+
+	.centered {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		font-weight: bold;
+		font-size: 80px;
+	}
+
+	.post {
+		width: 100%;
+		height: auto;
+		text-align: center;
+		padding: 100px;
+	}
+
+	.post h1 {
+		font-family: cursive;
+	}
+
+	.recipe {
+		width: auto;
+		height: auto;
+		padding: 20px;
+		overflow: hidden;
+		margin: auto;
+	}
+
+	.album {
+		float: left;
+		width: 33.3%;
+		height: 300px;
+		padding: 15px;
+		overflow: hidden;
+		margin: auto;
+	}
+
+	.album img {
+		width: 100%;
+		max-height: 85%;
+		overflow: hidden;
+	}
+
+	.album a {
+		color: gray;
+		font-size: 25px;
+	}
+
+	.album a:hover {
+		color: green;
+		text-decoration: none;
+	}
+
+	.quote {
+		width: auto;
+		height: 400px;
+	}
+
+	.quote img {
+		width: 100%;
+		max-height: 100%;
+		overflow: hidden;
+	}
+
+	.quote p {
+		position: absolute;
+		font-weight: bold;
+		font-size: 20px;
+		text-align: center;
+		color: white;
+		transform: translate(450px, -300px);
+
+	}
+
+	.contact {
+		text-align: center;
+		padding-top: 150px;
+		padding-bottom: 150px;
+		font-size: 30px;
+		font-family: monospace;
+	}
+
+	.footer {
+		width: 100%;
+		background-color: black;
+		text-align: center;
+	}
+
+	.gallery {
+		width: auto;
+		height: 250px;
+		overflow: hidden;
+		margin: auto;
+		position: relative;
+	}
+
+	.column {
+		float: left;
+		width: 20%;
+		height: 100%;
+		padding: 0.1px;
+		overflow: hidden;
+		position: relative;
+		margin: auto;
+	}
+
+	.column img {
+		width: 100%;
+		max-height: 100%;
+		overflow: hidden;
+	}
+
+	.lnk a {
+		text-align: center;
+		font-size: 30px;
+		padding-top: 50px;
+		padding-right: 20px;
+		text-decoration: none;
+		color: white;
+	}
+
+	.lnk a:hover {
+		color: gray;
+	}

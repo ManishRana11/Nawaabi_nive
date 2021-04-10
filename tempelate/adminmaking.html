@@ -1,0 +1,27 @@
+{% extends 'adminlayout.html'%}
+{% block content %}
+<!--content-->
+    {% set mkname = 'img/' + recipe.img %}
+	<div class="desktop">
+		<img src="{{ url_for('static', filename=mkname)}}" alt="background">
+		<div class="centered">{{recipe.name}}</div>
+	</div>
+	<div class="post">
+		{% for about in about %}
+		<div class="about">
+			<div class="pic">
+				<iframe frameborder="0" allowfullscreen width="420" height="345" src="https://www.youtube.com/embed/{{recipe.yt}}">
+				</iframe>
+			</div>
+			<div class="pic">
+				<h3>Ingredients</h3>
+				<pre style="background-color: white; border: none; text-align: left; font-family: cursive; font-size: 20px;">{{recipe.ingredient}}</pre>
+			</div>
+		</div>
+		<div class="about">
+			<h3 style="text-align: left; font-weight: bold; font-size: 80px;">Process</h3>
+			<pre style="background-color: white; border: none; text-align: left; font-family: cursive; font-size: 20px;">{{recipe.process}}</pre>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

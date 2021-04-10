@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>Nawaabi_nive</title>
+<link rel="shortcut icon" type="image/jpg" href="{{ url_for('static', filename='img/favicon.png')}}"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/contact.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$(window).on("scroll", function() {
+			if($(window).scrollTop() > 50) {
+				$(".header").addClass("active");
+			} else {
+			$(".header").removeClass("active");
+		}
+	});
+	});
+</script>
+	<script>
+function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "" || x == null) {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
+<script>
+function myYou() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</head>
+
+<body>
+<!--header-->
+	<header>
+		<div class="header">
+			<a href="/" class="logo">NAWAABI_NIVE</a>
+			<div class="header_right">
+				<a href="/">Home</a>
+				<a href="/recipe">Recipes</a>
+				<a href="/about">About</a>
+				<a href="/order">Order</a>
+				<a href="/contact">Contact</a>
+				<a href="#" class="fa fa-youtube-play" style="font-size: 25px;"></a>
+			</div>
+		</div>
+    </header>
+        {% block content %} {% endblock %}
+
+<!--footer-->
+		<footer>
+			<div class="footer">
+				<div class="gallery">
+					{% for footer in footer %}
+					{% set gname = 'img/' + footer.gallery %}
+					<div class="column">
+						<img src="{{ url_for('static', filename=gname)}}" alt="image_1">
+					</div>
+					{% endfor %}
+				</div>
+				<div class="lnk">
+					<a href="#" class="fa fa-youtube-play"></a>
+					<a href="#" class="fa fa-facebook"></a>
+					<a href="#" class="fa fa-instagram"></a>
+					<a href="#" class="fa fa-twitter"></a>
+				</div>
+				<br>
+				<p style="color: white;"><i class="fa fa-copyright"></i> 2021 Nawaabi Nive, All rights reserved.</p>
+				&nbsp;
+			</div>
+		</footer>
+</body>
+</html>

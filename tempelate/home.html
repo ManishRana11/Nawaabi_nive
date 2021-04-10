@@ -1,0 +1,75 @@
+{% extends 'layout.html'%}
+{% block content %}
+<!--content-->
+{% for desktop in desktop %}
+{% set homedeskname = 'img/' + desktop.homedesk %}
+		<div class="desktop">
+			<img src="{{ url_for('static', filename=homedeskname)}}" alt="background">
+			<div class="centered">Nawaabi Nive</div>
+		</div>
+{% endfor %}
+		<div class="post">
+			<h1>Nothing as creative as cooking</h1>
+			<br>
+			<h4>Nawaabi Nive is a platform dedicated to discovering what the delectable foods from fiction actually taste like</h4>
+			&nbsp;
+			<div class="recipe">
+				{% for recipe in recipe %}
+				{% set fname = 'img/' + recipe.img %}
+				<div class="album">
+					<img src="{{ url_for('static', filename=fname)}}" alt="recipe_1">
+					<a href="/recipe/{{recipe.name}}">{{recipe.name}}</a>
+				</div>
+				{% endfor  %}
+			</div>
+			<br>
+			<a href="/recipe" class="btn btn-success" style="font-size: 20px;">View All Recipes</a>
+		</div>
+{% for quote in quote %}
+{% set qname = 'img/' + quote.src %}
+		<div class="quote">
+			<img src="{{ url_for('static', filename=qname)}}" alt="qt">
+				<p>
+					दीपो भक्षयते ध्वान्तं कज्जलं च प्रसूयते |
+					<br>
+					यदन्नं भक्षयेन्नित्यं जायते तादृशी प्रजा ||
+					<br>
+					Lamp eats darkness and produces soot!
+					<br>
+					What food one eats daily, so will one produce.
+				</p>
+		</div>
+{% endfor %}
+		<div class="contact">
+			Contact Us
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-success alert-dismissable" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label ="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				{{message}}
+			</div>
+			{% endfor %}
+			{% endif %}
+			{% endwith %}
+			<form class="form-inline" action="/" name="sentMessage" id="contactForm" onsubmit="return validateForm()" method="post" required>
+				<div class="form-group">
+					<input type="name" class="form-control" id="firstname" placeholder="First Name" name="firstname">
+				</div>
+				<div class="form-group">
+					<input type="name" class="form-control" id="lastname" placeholder="Last Name" name="lastname">
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required data-validation-required-message="Please enter your email address.">
+				</div>
+				<br>
+				<div class="form-group">
+					<textarea rows="5" class="form-control" placeholder="Message" name = "message" style="width: 400px;" id="message" required data-validation-required-message="Please enter a message."></textarea>
+				</div>
+				<br>
+				<button type="submit" class="btn btn-success" id="send" >Submit</button>
+			</form>
+		</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "adminlayout.html" %}
+{% block content %}
+<!-- Page Header -->
+{% for desktop in desktop %}
+{% set admindeskname = 'img/' + desktop.admindesk %}
+<div class="desktop">
+    <img src="{{ url_for('static', filename=admindeskname)}}" alt="background">
+    <div class="centered">Admin</div>
+</div>
+{% endfor %}
+    <div class="overlay">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a href="/adminabout">  <button class="btn btn-primary"> About Page</button></a>
+            <hr>
+            <h1>Add/Edit About</h1>
+            <form name="sentMessage" id="contactForm" action = "/aboutedit/{{sno}}" method="post" novalidate>
+
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Profile Pic</label>
+                        <input class="form-control" placeholder="Profile photo.." name = "profile" id="profile" value="{{about.profile}}">
+                        <p class="help-block text-danger"></p>
+
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

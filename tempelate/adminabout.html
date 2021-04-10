@@ -1,0 +1,26 @@
+{% extends 'adminlayout.html'%}
+{% block content %}
+<!--content-->
+{% for desktop in desktop %}
+{% set aboutdeskname = 'img/' + desktop.aboutdesk %}
+	<div class="desktop">
+		<img src="{{ url_for('static', filename=aboutdeskname)}}" alt="background">
+		<div class="centered">About Us</div>
+	</div>
+{% endfor %}
+	<div class="post">
+		{% for about in about %}
+		{% set abname = 'img/' + about.profile %}
+		<a href="/aboutedit/{{about.sno}}"><button class="btn btn-primary" >Edit About</button></a>
+		<div class="about">
+			<div class="pic">
+				<img src="{{ url_for('static', filename=abname)}}" alt="pic">
+			</div>
+			<div class="pic">
+				<h3>About</h3>
+				<p>{{about.about}}</p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

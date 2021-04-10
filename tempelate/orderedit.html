@@ -1,0 +1,68 @@
+{% extends "adminlayout.html" %}
+{% block content %}
+<!-- Page Header -->
+{% for desktop in desktop %}
+{% set admindeskname = 'img/' + desktop.admindesk %}
+<div class="desktop">
+    <img src="{{ url_for('static', filename=admindeskname)}}" alt="background">
+    <div class="centered">Admin</div>
+</div>
+{% endfor %}
+    <div class="overlay">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a href="/adminorder">  <button class="btn btn-primary"> Order Page</button></a>
+            <hr>
+            <h1>Add/Edit Items</h1>
+            <form name="sentMessage" id="contactForm" action = "/orderedit/{{sno}}" method="post" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Item Name</label>
+                        <input type="text" class="form-control" placeholder="Item Name" id="item" name='item' required data-validation-required-message="Please enter item name." value="{{items.item}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Price</label>
+                        <textarea class="form-control" placeholder="Price" name = "price" id="price" required data-validation-required-message="Please enter item price.">{{items.price}}</textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Item Details</label>
+                        <textarea class="form-control" placeholder="Item Details" name = "detail" id="detail" required data-validation-required-message="Please enter the item details.">{{items.detail}}</textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Item Photo</label>
+                        <input class="form-control" placeholder="Item Photo" name = "pic" id="pic" value="{{items.pic}}">
+                        <p class="help-block text-danger"></p>
+
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'adminlayout.html'%}
+{% block content %}
+<!--content-->
+    {% set iname = 'img/' + items.pic %}
+	<div class="desktop">
+		<img src="{{ url_for('static', filename=iname)}}" alt="background">
+		<div class="centered">{{items.item}}</div>
+	</div>
+	<div class="post">
+		{% for about in about %}
+		<div class="about">
+			<h3 style="text-align: left; font-weight: bold; font-size: 80px;">Product Details</h3>
+			<pre style="background-color: white; border: none; text-align: left; font-family: cursive; font-size: 20px;">{{items.detail}}</pre>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

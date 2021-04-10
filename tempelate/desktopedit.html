@@ -1,0 +1,82 @@
+{% extends "adminlayout.html" %}
+{% block content %}
+<!-- Page Header -->
+{% for desktop in desktop %}
+{% set admindeskname = 'img/' + desktop.admindesk %}
+<div class="desktop">
+    <img src="{{ url_for('static', filename=admindeskname)}}" alt="background">
+    <div class="centered">Admin</div>
+</div>
+{% endfor %}
+    <div class="overlay">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a href="/adminhome">  <button class="btn btn-primary"> Home Page</button></a>
+            <hr>
+            <h1>Add/Edit Desktop Images</h1>
+            <form name="sentMessage" id="contactForm" action = "/desktopedit/{{sno}}" method="post" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Home Page Image</label>
+                        <input class="form-control" placeholder="Home Page Image" name = "homedesk" id="homedesk" value="{{desktop.homedesk}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Recipe Page Image</label>
+                        <input class="form-control" placeholder="Recipe Page Image" name = "recipedesk" id="recipedesk" value="{{desktop.recipedesk}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>About Page Image</label>
+                        <input class="form-control" placeholder="About Page Image" name = "aboutdesk" id="aboutdesk" value="{{desktop.aboutdesk}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Order Page Image</label>
+                        <input class="form-control" placeholder="Order Page Image" name = "orderdesk" id="orderdesk" value="{{desktop.orderdesk}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Contact Page Image</label>
+                        <input class="form-control" placeholder="Contact Page Image" name = "contactdesk" id="contactdesk" value="{{desktop.contactdesk}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Admin Page Image</label>
+                        <input class="form-control" placeholder="Admin Page Image" name = "admindesk" id="admindesk" value="{{desktop.admindesk}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

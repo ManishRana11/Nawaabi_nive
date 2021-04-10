@@ -1,0 +1,89 @@
+{% extends 'layout.html'%}
+{% block content %}
+<script>
+$(document).ready(function() {
+        $('#Loading_purchase_status').modal('hide');
+
+        $('.btn btn-danger').click(function () {
+            $('#Loading_purchase_status').removeData('bs.modal').modal({backdrop: 'static', keyboard: false});
+            $('#Loading_purchase_status').modal('show');
+        });
+    });
+    </script>
+<!--content-->
+{% for desktop in desktop %}
+{% set orderdeskname = 'img/' + desktop.orderdesk %}
+	<div class="desktop">
+		<img src="{{ url_for('static', filename=orderdeskname)}}" alt="background">
+		<div class="centered">Place Order</div>
+	</div>
+{% endfor %}
+	<div class="post">
+		<h1 style="color: #ff6666">Let's taste some deliciousness</h1>
+		<br>
+		<div class="recipe">
+			{% for items in items %}
+			{% set orname = 'img/' + items.pic %}
+			<div class="order">
+				<img src="{{ url_for('static', filename=orname)}}" alt="cake_1">
+				<a href="/order/{{items.item}}">{{items.item}}</a>
+				<br>
+				<p>&#8377; {{items.price}}</p>
+<!-- Button-->
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="POST" target="_blank">
+
+
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="<?php
+echo $site_config->grabSiteSettings_manual($con, 'paypal_address');
+?>">
+    <input type="hidden" name="item_name" value="<?php
+echo $name;
+?>">
+    <input type="hidden" name="item_number" value="<?php
+echo $id;
+?>">
+    <input type="hidden" name="amount" value="<?php
+echo $price;
+?>">
+    <input type="hidden" name="quantity" value="1">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="custom" value="username=<?php
+echo $username;
+?>&product=<?php
+echo $name;
+?>">
+    <input type="hidden" name="notify_url" value="<?php
+echo $site_callback;
+?>">
+    <input type="hidden" name="cancel_return" value="<?php
+echo $site_return_canceled;
+?>">
+
+    <button type="submit" class="btn btn-danger" id="paypal_submit" aria-hidden="true" data-backdrop="static" data-keyboard="false" style=" background-color:green; margin-bottom: 15px; display: block; width: 40%; float:left; margin-left: 30%;">
+        Buy Now
+    </button>
+
+</form>
+			</div>
+			{% endfor  %}
+		</div>
+	</div>
+
+<div class="modal fade" id="Loading_purchase_status" style="display: none;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Payment Status (Don't close this during a payment) <div style="float: right;"><img src="<?php echo $site_config->grabSiteSettings($con, 'site_url').'/pizza/styles/img/loading.gif'; ?>" style="width: 20px; height: 20px;"></div></h4>
+          </div>
+          <div class="modal-body">
+            <p>Payment Status: <div id="awaiting_payment_status">Awaiting Payment on the Paypal payment page...</div></p>
+          </div>
+          <div class="modal-footer">
+            <a class="btn btn-primary" href="<?php echo $site_config->grabSiteSettings($con, 'site_url').'/pizza/myFiles.php'; ?>">My Files</a>
+            <a class="btn btn-danger" data-dismiss="modal">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
